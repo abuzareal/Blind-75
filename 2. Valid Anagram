@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        HashMap <Character,Integer> h = new HashMap<>();
+        char[] arr1 = s.toCharArray();
+        char[] arr2 = t.toCharArray();
+        for(char c:arr1)
+            h.put(c,h.getOrDefault(c,0)+1);
+        for(char c:arr2){
+            if(h.containsKey(c)){
+                int a = h.get(c);
+                if(a>1)
+                    h.replace(c,a-1);
+                else
+                    h.remove(c);
+            }
+            else
+                return false;
+        }
+        if(h.size()==0)
+            return true;
+        return false;
+    }
+}
+Console
